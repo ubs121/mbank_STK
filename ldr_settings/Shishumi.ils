@@ -1,0 +1,22 @@
+[Params]
+Java Classes=C:\Program Files\SIMAlliance\Examples\Shishumi\*.java
+PackageName=com.gemplus.javacard.interop.shishumi
+PackageVersion=1.0
+PackageAID=A0000000180002FFFFFFFF8900000400
+ApplicationName=com.gemplus.javacard.interop.shishumi.Shishumi
+ApplicationAID=A0000000180002FFFFFFFF8900000401
+InstanceAID=A0000000180002FFFFFFFF8900000401
+AccessDomain=00
+PriorityLevel=FF
+MaxLoadCmdLength=6C
+MaxMenuEntryTextLength=10
+MaxNbOfTimers=00
+MaxMenuEntryNumber=01
+MenuEntriesPosID=0004
+InstallParams=
+PackageNVMemSize=1C00
+InstallNVMemSize=0180
+InstallVMemSize=0000
+KIDKeyIndex=1
+SecLevelDESKey=0123456789ABCDEF
+ProofOfReceipt=01

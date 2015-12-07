@@ -1,0 +1,29 @@
+JOB_DESCRIPTION_SECTION
+   .JobId             777:auto 
+   .JobTitle          "mbank: applet"
+   .AppPathSfx        "../CST/mb_ota/applets/mbank/applets"
+   .MOEnabled         "true"
+   .ForProfile        "all"
+   .Card_VendorOrType "G+_Java"
+   #CAP_FILE 		"mbank.cap"
+   #INST_APP_GSM_PARAMETER  "<0100 FF 00 14.01.00.00>"
+   
+   APPLETS_DESCRIPTION_SECTION
+   #--------------------------------------------------
+    .Subtask  "Applet removal section"
+   #--------------------------------------------------
+        #DEL_APP .Send "010" "mc_delapp.hex"  "In:Hex" "Out:0348"  "Del:true"  "WDel:false" "" "SEC:_DES_:03.08.1200.00.10.000000.R0000000001"
+        #DEL_PKG .Send "011" "mc_delpkg.hex"  "In:Hex" "Out:0348"  "Del:true"  "WDel:true"  "" "SEC:_DES_:03.08.1200.00.10.000000.R0000000001"
+        .Send "12" "Mobile Bank menu is removed" "In:InL" "Out:Text"  "Del:true"  "WDel:true"
+        .Print "Mobile Bank menu is removed"
+        .Exit
+   #--------------------------------------------------
+    .Subtask  "Applet installation section"
+   #----------------------------------------------------
+        #INST_PKG .Send "031" "mc_instpkg.hex" "In:Hex" "Out:0348"  "Del:true"  "WDel:true"  "" "SEC:_DES_:03.08.1200.00.10.000000.R0000000001"
+        #LOAD_PKG .Send "1**" "mc_load_**.hex" "In:Hex" "Out:0348"  "Del:true"  "WDel:false" "" "SEC:_DES_:03.08.1200.00.10.000000.R0000000001"
+        #INST_APP .Send "200" "mc_instapp.hex" "In:Hex" "Out:0348"  "Del:true"  "WDel:false" "" "SEC:_DES_:03.08.1221.00.10.000000.R0000000001"
+        .Send "201" "Mobile Bank menu is installed" "In:InL" "Out:Text"  "Del:true"  "WDel:true"
+        .Print "Mobile Bank menu is installed"
+       .Exit
+#------------------------------------------------------------------------------

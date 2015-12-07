@@ -1,0 +1,22 @@
+[Params]
+Java Classes=C:\Program Files\SIMAlliance\Examples\GuessNumber\*.java
+PackageName=com.oberthurcs.guessnumber
+PackageVersion=1.0
+PackageAID=A0000000770002FFFFFFFF8900000300
+ApplicationName=com.oberthurcs.guessnumber.GuessNumber
+ApplicationAID=A0000000770002FFFFFFFF8900000301
+InstanceAID=A0000000770002FFFFFFFF8900000301
+AccessDomain=00
+PriorityLevel=FF
+MaxLoadCmdLength=6C
+MaxMenuEntryTextLength=10
+MaxNbOfTimers=00
+MaxMenuEntryNumber=01
+MenuEntriesPosID=0003
+InstallParams=
+PackageNVMemSize=1400
+InstallNVMemSize=02EE
+InstallVMemSize=0000
+KIDKeyIndex=1
+SecLevelDESKey=0123456789ABCDEF
+ProofOfReceipt=01

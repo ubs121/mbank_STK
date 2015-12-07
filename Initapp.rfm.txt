@@ -1,0 +1,16 @@
+#-- ------------------
+#-- Creation of 3F00/8F00/FF42 file and removal not neccessary files:
+#-- ------------------
+  select      0x3F00     #-- select DFmf
+  select      0x8F00     #-- select DFappli
+
+#-- create FF42:
+# createFile  0x6223820201218302FF428A01058B032F06018002003C8800A50B9006013200000000C00120
+# select      0xFF42
+# updateBin   0x0000, 0x8140041281FFFFFFFFFF07917996090030F0000007917996090050F000000506810000100000000007917996090050F1000005068100001000000000
+
+
+#-- remove:
+  delete      0x9001
+  delete      0x8F03
+#-- ------------------

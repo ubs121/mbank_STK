@@ -1,0 +1,3823 @@
+// converted by version 1.1
+// on Tue Jul 10 14:21:08 GMT+08:00 2007
+
+.package mbank {
+	.aid 0xA0:0x0:0x0:0x0:0x19:0xFF:0xFF:0xFF:0xFF:0xFF:0x4D:0x42:0x41:0x4E:0x4B;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.0;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x9:0x0:0x3:0xFF:0xFF:0xFF:0xFF:0x89:0x10:0x71:0x0:0x2 2.2;		//sim/toolkit
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.1;		//javacardx/crypto
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.1;		//javacard/security
+	}
+
+	.applet {
+		0xA0:0x0:0x0:0x0:0x19:0xFF:0xFF:0xFF:0xFF:0xFF:0x4D:0x42:0x41:0x4E:0x4B:0x1 BankApplet;
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef BankApplet BankApplet$Item/this$0;
+		// 1
+		instanceFieldRef byte BankApplet$Item/id;
+		// 2
+		instanceFieldRef byte[] BankApplet$Item/alpha;
+		// 3
+		instanceFieldRef BankApplet BankApplet$InputItem/this$0;
+		// 4
+		instanceFieldRef byte BankApplet$InputItem/type;
+		// 5
+		instanceFieldRef byte BankApplet$InputItem/resLen;
+		// 6
+		instanceFieldRef BankApplet BankApplet$Menu/this$0;
+		// 7
+		instanceFieldRef byte[] BankApplet$Menu/subItems;
+		// 8
+		instanceFieldRef byte[] BankApplet/dlgTransfer_Def;
+		// 9
+		instanceFieldRef byte[] BankApplet/dlgPayment_Def;
+		// 10
+		instanceFieldRef byte[] BankApplet/dlgTransfer_Xaan;
+		// 11
+		instanceFieldRef byte[] BankApplet/dlgPayment_Xaan;
+		// 12
+		instanceFieldRef byte[] BankApplet/dlgTransfer_Xac;
+		// 13
+		instanceFieldRef byte[] BankApplet/dlgPayment_Xac;
+		// 14
+		instanceFieldRef byte[] BankApplet/dlgTransfer;
+		// 15
+		instanceFieldRef byte[] BankApplet/dlgPayment;
+		// 16
+		instanceFieldRef BankApplet$Item[] BankApplet/items;
+		// 17
+		instanceFieldRef byte BankApplet/currentItem;
+		// 18
+		instanceFieldRef byte BankApplet/currentItemIdx;
+		// 19
+		instanceFieldRef byte BankApplet/FINAL_STATE;
+		// 20
+		instanceFieldRef byte[] BankApplet/bank;
+		// 21
+		instanceFieldRef byte[] BankApplet/accref;
+		// 22
+		instanceFieldRef byte[] BankApplet/key;
+		// 23
+		instanceFieldRef byte[] BankApplet/sms;
+		// 24
+		instanceFieldRef byte[] BankApplet/tempBuffer;
+		// 25
+		instanceFieldRef 3.1 BankApplet/cipherDES;
+		// 26
+		instanceFieldRef 4.0 BankApplet/keyDES;
+		// 27
+		instanceFieldRef 2.9 BankApplet/reg;
+		// 28
+		instanceFieldRef byte BankApplet/bankid;
+		// 29
+		instanceFieldRef short BankApplet/i;
+		// 30
+		instanceFieldRef short BankApplet/j;
+		// 31
+		classRef BankApplet$InputItem;
+		// 32
+		staticMethodRef BankApplet$InputItem/<init>(Lmbank/BankApplet;B[BBB)V;
+		// 33
+		staticMethodRef 1.3.0()V;		// javacard/framework/Applet.<init>()V
+		// 34
+		staticMethodRef 3.1.0(BZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	3.1;
+
+		// 35
+		staticMethodRef BankApplet$Item/<init>(Lmbank/BankApplet;B[B)V;
+		// 36
+		staticMethodRef 4.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	4.0;
+
+		// 37
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 38
+		staticMethodRef 2.9.0()Lsim/toolkit/ToolkitRegistry;;		// sim/toolkit/ToolkitRegistry.getEntry()Lsim/toolkit/ToolkitRegistry;
+			.descriptor	Lsim/toolkit/ToolkitRegistry;	2.9;
+
+		// 39
+		classRef BankApplet$Item;
+		// 40
+		virtualMethodRef 2.9.11([BSSBZBS)B;		// sim/toolkit/ToolkitRegistry.initMenuEntry([BSSBZBS)B
+		// 41
+		classRef BankApplet$Menu;
+		// 42
+		virtualMethodRef 2.9.9(B)V;		// sim/toolkit/ToolkitRegistry.setEvent(B)V
+		// 43
+		classRef BankApplet;
+		// 44
+		staticMethodRef BankApplet/<init>()V;
+		// 45
+		virtualMethodRef 1.3.1()V;		// javacard/framework/Applet.register()V
+		// 46
+		staticMethodRef 2.8.0()Lsim/toolkit/EnvelopeHandler;;		// sim/toolkit/EnvelopeHandler.getTheHandler()Lsim/toolkit/EnvelopeHandler;
+			.descriptor	Lsim/toolkit/EnvelopeHandler;	2.8;
+
+		// 47
+		virtualMethodRef 2.8.12()B;		// sim/toolkit/EnvelopeHandler.getItemIdentifier()B
+		// 48
+		virtualMethodRef BankApplet/serviceBank()V;
+		// 49
+		virtualMethodRef 2.8.13()S;		// sim/toolkit/EnvelopeHandler.getSecuredDataOffset()S
+		// 50
+		virtualMethodRef 2.8.14()S;		// sim/toolkit/EnvelopeHandler.getSecuredDataLength()S
+		// 51
+		virtualMethodRef 2.2.2(S[BSS)S;		// sim/toolkit/ViewHandler.copyValue(S[BSS)S
+		// 52
+		staticMethodRef BankApplet/displayText([BSS)B;
+		// 53
+		staticMethodRef 2.5.0()Lsim/toolkit/ProactiveResponseHandler;;		// sim/toolkit/ProactiveResponseHandler.getTheHandler()Lsim/toolkit/ProactiveResponseHandler;
+			.descriptor	Lsim/toolkit/ProactiveResponseHandler;	2.5;
+
+		// 54
+		staticMethodRef BankApplet/ShowMenu(Lmbank/BankApplet$Menu;)B;
+		// 55
+		staticMethodRef 1.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 56
+		virtualMethodRef 2.5.12()B;		// sim/toolkit/ProactiveResponseHandler.getItemIdentifier()B
+		// 57
+		staticMethodRef BankApplet/EncryptAndSend()V;
+		// 58
+		staticMethodRef BankApplet/GetInput([B)B;
+		// 59
+		staticMethodRef BankApplet/Confirm()B;
+		// 60
+		staticMethodRef BankApplet/AppendUserData(BB)V;
+		// 61
+		staticMethodRef BankApplet/GetInput(Lmbank/BankApplet$InputItem;)B;
+		// 62
+		virtualMethodRef 2.5.15([BS)S;		// sim/toolkit/ProactiveResponseHandler.copyTextString([BS)S
+		// 63
+		staticMethodRef BankApplet/AppendUserData(B[B)V;
+		// 64
+		staticMethodRef BankApplet/sendSMS()B;
+		// 65
+		virtualMethodRef 2.5.14()S;		// sim/toolkit/ProactiveResponseHandler.getTextStringLength()S
+		// 66
+		virtualMethodRef 2.9.4(B[BSSBZBS)V;		// sim/toolkit/ToolkitRegistry.changeMenuEntry(B[BSSBZBS)V
+		// 67
+		staticMethodRef 1.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 68
+		staticMethodRef BankApplet$Menu/<init>(Lmbank/BankApplet;B[B[B)V;
+		// 69
+		staticMethodRef 2.10.0()Lsim/toolkit/ProactiveHandler;;		// sim/toolkit/ProactiveHandler.getTheHandler()Lsim/toolkit/ProactiveHandler;
+			.descriptor	Lsim/toolkit/ProactiveHandler;	2.10;
+
+		// 70
+		virtualMethodRef 2.10.18(BB[BSSSS)V;		// sim/toolkit/ProactiveHandler.initGetInput(BB[BSSSS)V
+		// 71
+		virtualMethodRef 2.10.22()B;		// sim/toolkit/ProactiveHandler.send()B
+		// 72
+		virtualMethodRef 2.10.21(BBB)V;		// sim/toolkit/ProactiveHandler.init(BBB)V
+		// 73
+		virtualMethodRef 2.4.12(B[BSS)V;		// sim/toolkit/EditHandler.appendTLV(B[BSS)V
+		// 74
+		virtualMethodRef 2.4.15(BB[BSS)V;		// sim/toolkit/EditHandler.appendTLV(BB[BSS)V
+		// 75
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 76
+		classRef 0.2;		// java/lang/Exception
+		// 77
+		classRef 4.10;		// javacard/security/DESKey
+		// 78
+		virtualMethodRef 3.1.3(Ljavacard/security/Key;B)V;		// javacardx/crypto/Cipher.init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	4.0;
+
+		// 79
+		virtualMethodRef 3.1.1([BSS[BS)S;		// javacardx/crypto/Cipher.doFinal([BSS[BS)S
+		// 80
+		virtualMethodRef 2.10.19(BB[BSS)V;		// sim/toolkit/ProactiveHandler.initDisplayText(BB[BSS)V
+	}
+
+	.class  BankApplet$Item extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public byte id 0;		// B
+			public byte[] alpha 1;		// [B
+			private final BankApplet this$0 2;		// Lmbank/BankApplet;
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(Lmbank/BankApplet;B[B)V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 37;		// java/lang/Object.<init>()V
+					aload_0;
+					aload_1;
+					putfield_a 0;		// reference mbank/BankApplet$Item.this$0
+					aload_0;
+					sload_2;
+					putfield_b 1;		// byte mbank/BankApplet$Item.id
+					aload_0;
+					aload_3;
+					putfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					return;
+		}
+
+	}
+
+	.class  BankApplet$InputItem extends BankApplet$Item {
+
+		.fields {
+			public byte type 0;		// B
+			public byte resLen 1;		// B
+			private final BankApplet this$0 2;		// Lmbank/BankApplet;
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(Lmbank/BankApplet;B[BBB)V 0 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					sload_2;
+					aload_3;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aload_0;
+					aload_1;
+					putfield_a 3;		// reference mbank/BankApplet$InputItem.this$0
+					aload_0;
+					sload 4;
+					putfield_b 4;		// byte mbank/BankApplet$InputItem.type
+					aload_0;
+					sload 5;
+					putfield_b 5;		// byte mbank/BankApplet$InputItem.resLen
+					return;
+		}
+
+	}
+
+	.class  BankApplet$Menu extends BankApplet$Item {
+
+		.fields {
+			public byte[] subItems 0;		// [B
+			private final BankApplet this$0 1;		// Lmbank/BankApplet;
+		}
+
+		.publicMethodTable 1 {
+			equals(Ljava/lang/Object;)Z;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(Lmbank/BankApplet;B[B[B)V 0 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					sload_2;
+					aload_3;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aload_0;
+					aload_1;
+					putfield_a 6;		// reference mbank/BankApplet$Menu.this$0
+					aload_0;
+					aload 4;
+					putfield_a 7;		// reference mbank/BankApplet$Menu.subItems
+					return;
+		}
+
+	}
+
+	.class public BankApplet 0 extends 1.3 {		// extends javacard/framework/Applet
+
+		.shareable;
+
+		.fields {
+			private final byte[] dlgTransfer_Def 0;		// [B
+			private final byte[] dlgPayment_Def 1;		// [B
+			private final byte[] dlgTransfer_Xaan 2;		// [B
+			private final byte[] dlgPayment_Xaan 3;		// [B
+			private final byte[] dlgTransfer_Xac 4;		// [B
+			private final byte[] dlgPayment_Xac 5;		// [B
+			private byte[] dlgTransfer 6;		// [B
+			private byte[] dlgPayment 7;		// [B
+			private final BankApplet$Item[] items 8;		// [Lmbank/BankApplet$Item;
+			private 2.9 reg 9;		// Lsim/toolkit/ToolkitRegistry;
+			private 3.1 cipherDES 10;		// Ljavacardx/crypto/Cipher;
+			private 4.0 keyDES 11;		// Ljavacard/security/Key;
+			private byte[] bank 12;		// [B
+			private byte[] accref 13;		// [B
+			private byte[] key 14;		// [B
+			private byte[] sms 15;		// [B
+			private byte[] tempBuffer 16;		// [B
+			private byte bankid 17;		// B
+			private byte currentItem 18;		// B
+			private byte currentItemIdx 19;		// B
+			private short i 20;		// S
+			private short j 21;		// S
+			private final byte FINAL_STATE 22;		// B
+		}
+
+		.publicMethodTable 7 {
+			equals(Ljava/lang/Object;)Z;
+			register()V;
+			register([BSB)V;
+			selectingApplet()Z;
+			deselect()V;
+			getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;
+			select()Z;
+			process(Ljavacard/framework/APDU;)V;
+			processToolkit(B)V;
+			serviceBank()V;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 1.2 { 		// javacard/framework/Shareable
+			}
+
+			.interface 2.1 { 		// sim/toolkit/ToolkitInterface
+				8;		// processToolkit(B)V
+			}
+
+			.interface 2.0 { 		// sim/toolkit/ToolkitConstants
+			}
+
+		}
+
+		.method public <init>()V 0 {
+			.stack 13;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 33;		// javacard/framework/Applet.<init>()V
+					aload_0;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 23;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 21;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 22;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 20;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 24;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 25;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 19;
+					bastore;
+					putfield_a 8;		// reference mbank/BankApplet.dlgTransfer_Def
+					aload_0;
+					sconst_4;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 26;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 24;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 25;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 19;
+					bastore;
+					putfield_a 9;		// reference mbank/BankApplet.dlgPayment_Def
+					aload_0;
+					sconst_4;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 23;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 20;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 24;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 25;
+					bastore;
+					putfield_a 10;		// reference mbank/BankApplet.dlgTransfer_Xaan
+					aload_0;
+					sconst_3;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 26;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 24;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 25;
+					bastore;
+					putfield_a 11;		// reference mbank/BankApplet.dlgPayment_Xaan
+					aload_0;
+					sconst_5;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 23;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 22;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 20;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 24;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 25;
+					bastore;
+					putfield_a 12;		// reference mbank/BankApplet.dlgTransfer_Xac
+					aload_0;
+					sconst_3;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 26;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 24;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 25;
+					bastore;
+					putfield_a 13;		// reference mbank/BankApplet.dlgPayment_Xac
+					aload_0;
+					getfield_a_this 8;		// reference mbank/BankApplet.dlgTransfer_Def
+					putfield_a 14;		// reference mbank/BankApplet.dlgTransfer
+					aload_0;
+					getfield_a_this 9;		// reference mbank/BankApplet.dlgPayment_Def
+					putfield_a 15;		// reference mbank/BankApplet.dlgPayment
+					aload_0;
+					bspush 40;
+					anewarray 39;		// mbank/BankApplet$Item
+					dup;
+					sconst_0;
+					new 41;		// mbank/BankApplet$Menu
+					dup;
+					aload_0;
+					bspush 77;
+					bspush 15;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 77;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 111;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 98;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 105;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 66;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 107;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 32;
+					bastore;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					dup;
+					sconst_1;
+					sconst_2;
+					bastore;
+					dup;
+					sconst_2;
+					sconst_3;
+					bastore;
+					dup;
+					sconst_3;
+					sconst_4;
+					bastore;
+					dup;
+					sconst_4;
+					sconst_5;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 6;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 7;
+					bastore;
+					invokespecial 68;		// mbank/BankApplet$Menu.<init>(Lmbank/BankApplet;B[B[B)V
+					aastore;
+					dup;
+					sconst_1;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					bspush 66;
+					bspush 8;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 85;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 100;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 101;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 103;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 100;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 108;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					sconst_2;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					bspush 80;
+					bspush 6;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 84;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 98;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 114;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					sconst_3;
+					new 41;		// mbank/BankApplet$Menu
+					dup;
+					aload_0;
+					bspush 85;
+					bspush 6;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 84;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 111;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 112;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 85;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 112;
+					bastore;
+					bspush 9;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 8;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 9;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 10;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 11;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 12;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 13;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 14;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 15;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 16;
+					bastore;
+					invokespecial 68;		// mbank/BankApplet$Menu.<init>(Lmbank/BankApplet;B[B[B)V
+					aastore;
+					dup;
+					sconst_4;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					bspush 84;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 71;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 105;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 103;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 101;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					sconst_5;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					bspush 83;
+					bspush 15;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 71;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 105;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 103;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 115;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 104;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 108;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 120;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 6;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					bspush 73;
+					bspush 8;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 77;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 101;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 100;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 101;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 101;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 108;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 108;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 7;
+					new 41;		// mbank/BankApplet$Menu
+					dup;
+					aload_0;
+					bspush 32;
+					bspush 8;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 84;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 111;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 120;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 105;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 114;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 111;
+					bastore;
+					sconst_4;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 36;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 37;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 38;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 39;
+					bastore;
+					invokespecial 68;		// mbank/BankApplet$Menu.<init>(Lmbank/BankApplet;B[B[B)V
+					aastore;
+					dup;
+					bspush 8;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_1;
+					bspush 8;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 53;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 106;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 9;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_2;
+					bspush 9;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 49;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 106;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 10;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_3;
+					bspush 9;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 50;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 53;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 106;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 11;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_4;
+					bspush 9;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 54;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 53;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 106;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 12;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_5;
+					bspush 10;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 49;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 106;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 13;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					bspush 6;
+					bspush 13;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 56;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 120;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 106;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 14;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					bspush 7;
+					bspush 14;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 49;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 53;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 120;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 106;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 15;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					bspush 8;
+					bspush 14;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 49;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 53;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 52;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 120;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 106;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 16;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					bspush 9;
+					bspush 14;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 50;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 49;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 48;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 120;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 106;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 17;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 35;
+					bspush 12;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 68;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 115;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 58;
+					bastore;
+					sconst_1;
+					bspush 8;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 18;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 42;
+					bspush 9;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 78;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 99;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 107;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 100;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 58;
+					bastore;
+					sconst_4;
+					bspush 8;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 19;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 33;
+					bspush 8;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 84;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 120;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 117;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 58;
+					bastore;
+					sconst_0;
+					bspush 6;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 20;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 64;
+					sconst_5;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 68;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 115;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 58;
+					bastore;
+					sconst_0;
+					bspush 18;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 21;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 61;
+					sconst_5;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 66;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 107;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 58;
+					bastore;
+					sconst_1;
+					bspush 8;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 22;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 94;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 83;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 98;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 58;
+					bastore;
+					sconst_0;
+					sconst_4;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 23;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 62;
+					bspush 14;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 88;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 101;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 101;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 118;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 99;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 104;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 58;
+					bastore;
+					sconst_1;
+					bspush 15;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 24;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 36;
+					bspush 11;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 77;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 103;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 100;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 117;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 58;
+					bastore;
+					sconst_0;
+					bspush 8;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 25;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 58;
+					bspush 16;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 71;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 105;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 103;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 117;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 116;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 15;
+					bspush 58;
+					bastore;
+					sconst_1;
+					bspush 25;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 26;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 126;
+					bspush 14;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 84;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 98;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 114;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 107;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 100;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 58;
+					bastore;
+					sconst_1;
+					bspush 8;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 27;
+					new 31;		// mbank/BankApplet$InputItem
+					dup;
+					aload_0;
+					bspush 63;
+					bspush 6;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 73;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 100;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 101;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 120;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 58;
+					bastore;
+					sconst_1;
+					bspush 8;
+					invokespecial 32;		// mbank/BankApplet$InputItem.<init>(Lmbank/BankApplet;B[BBB)V
+					aastore;
+					dup;
+					bspush 28;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_0;
+					bspush 10;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 73;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 103;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 101;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 101;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 120;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 117;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 117;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 63;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 29;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_0;
+					bspush 14;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 77;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 111;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 98;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 105;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 66;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 107;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 46;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 46;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 30;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_0;
+					bspush 17;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 75;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 111;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 100;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 108;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 111;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 120;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 100;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 108;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 100;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 14;
+					bspush 116;
+					bastore;
+					dup;
+					bspush 15;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 16;
+					bspush 105;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 31;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_2;
+					bspush 10;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 68;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 115;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 115;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 108;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 120;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 32;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_2;
+					bspush 14;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 78;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 99;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 107;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 100;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 115;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 111;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 108;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 120;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 33;
+					new 41;		// mbank/BankApplet$Menu
+					dup;
+					aload_0;
+					bspush 37;
+					bspush 14;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 77;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 103;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 117;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 105;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 32;
+					bastore;
+					dup;
+					bspush 9;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 10;
+					bspush 101;
+					bastore;
+					dup;
+					bspush 11;
+					bspush 103;
+					bastore;
+					dup;
+					bspush 12;
+					bspush 106;
+					bastore;
+					dup;
+					bspush 13;
+					bspush 58;
+					bastore;
+					sconst_2;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 34;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 35;
+					bastore;
+					invokespecial 68;		// mbank/BankApplet$Menu.<init>(Lmbank/BankApplet;B[B[B)V
+					aastore;
+					dup;
+					bspush 34;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_1;
+					sconst_3;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 77;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 78;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 84;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 35;
+					new 39;		// mbank/BankApplet$Item
+					dup;
+					aload_0;
+					sconst_2;
+					sconst_3;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 85;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 83;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 68;
+					bastore;
+					invokespecial 35;		// mbank/BankApplet$Item.<init>(Lmbank/BankApplet;B[B)V
+					aastore;
+					dup;
+					bspush 36;
+					new 41;		// mbank/BankApplet$Menu
+					dup;
+					aload_0;
+					sconst_1;
+					bspush 9;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 65;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 111;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 100;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 66;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 107;
+					bastore;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					dup;
+					sconst_1;
+					sconst_2;
+					bastore;
+					dup;
+					sconst_2;
+					sconst_3;
+					bastore;
+					dup;
+					sconst_3;
+					sconst_4;
+					bastore;
+					dup;
+					sconst_4;
+					sconst_5;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 6;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 7;
+					bastore;
+					invokespecial 68;		// mbank/BankApplet$Menu.<init>(Lmbank/BankApplet;B[B[B)V
+					aastore;
+					dup;
+					bspush 37;
+					new 41;		// mbank/BankApplet$Menu
+					dup;
+					aload_0;
+					sconst_2;
+					bspush 9;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 88;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 110;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 66;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 8;
+					bspush 107;
+					bastore;
+					bspush 6;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					dup;
+					sconst_1;
+					sconst_4;
+					bastore;
+					dup;
+					sconst_2;
+					sconst_2;
+					bastore;
+					dup;
+					sconst_3;
+					sconst_5;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 6;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 7;
+					bastore;
+					invokespecial 68;		// mbank/BankApplet$Menu.<init>(Lmbank/BankApplet;B[B[B)V
+					aastore;
+					dup;
+					bspush 38;
+					new 41;		// mbank/BankApplet$Menu
+					dup;
+					aload_0;
+					sconst_3;
+					bspush 8;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 88;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 99;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 66;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 97;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 7;
+					bspush 107;
+					bastore;
+					bspush 6;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					dup;
+					sconst_1;
+					sconst_4;
+					bastore;
+					dup;
+					sconst_2;
+					sconst_2;
+					bastore;
+					dup;
+					sconst_3;
+					sconst_5;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 6;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 7;
+					bastore;
+					invokespecial 68;		// mbank/BankApplet$Menu.<init>(Lmbank/BankApplet;B[B[B)V
+					aastore;
+					dup;
+					bspush 39;
+					new 41;		// mbank/BankApplet$Menu
+					dup;
+					aload_0;
+					sconst_4;
+					bspush 7;
+					newarray 11;
+					dup;
+					sconst_0;
+					bspush 88;
+					bastore;
+					dup;
+					sconst_1;
+					bspush 88;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 32;
+					bastore;
+					dup;
+					sconst_3;
+					bspush 66;
+					bastore;
+					dup;
+					sconst_4;
+					bspush 97;
+					bastore;
+					dup;
+					sconst_5;
+					bspush 110;
+					bastore;
+					dup;
+					bspush 6;
+					bspush 107;
+					bastore;
+					sconst_3;
+					newarray 11;
+					dup;
+					sconst_0;
+					sconst_1;
+					bastore;
+					dup;
+					sconst_1;
+					sconst_3;
+					bastore;
+					dup;
+					sconst_2;
+					bspush 7;
+					bastore;
+					invokespecial 68;		// mbank/BankApplet$Menu.<init>(Lmbank/BankApplet;B[B[B)V
+					aastore;
+					putfield_a 16;		// reference mbank/BankApplet.items
+					aload_0;
+					bspush 77;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+					aload_0;
+					sconst_0;
+					putfield_b 18;		// byte mbank/BankApplet.currentItemIdx
+					aload_0;
+					sconst_0;
+					putfield_b 19;		// byte mbank/BankApplet.FINAL_STATE
+					aload_0;
+					bspush 9;
+					newarray 11;
+					putfield_a 20;		// reference mbank/BankApplet.bank
+					aload_0;
+					bspush 9;
+					newarray 11;
+					putfield_a 21;		// reference mbank/BankApplet.accref
+					aload_0;
+					bspush 8;
+					sconst_1;
+					invokestatic 75;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 22;		// reference mbank/BankApplet.key
+					aload_0;
+					sspush 141;
+					sconst_1;
+					invokestatic 75;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 23;		// reference mbank/BankApplet.sms
+					aload_0;
+					sspush 141;
+					sconst_1;
+					invokestatic 75;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					sconst_2;
+					sconst_1;
+					invokestatic 34;		// javacardx/crypto/Cipher.getInstance(BZ)Ljavacardx/crypto/Cipher;
+					putfield_a 25;		// reference mbank/BankApplet.cipherDES
+					aload_0;
+					sconst_1;
+					bspush 64;
+					sconst_1;
+					invokestatic 36;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					putfield_a 26;		// reference mbank/BankApplet.keyDES
+					aload_0;
+					invokestatic 38;		// sim/toolkit/ToolkitRegistry.getEntry()Lsim/toolkit/ToolkitRegistry;
+					putfield_a 27;		// reference mbank/BankApplet.reg
+					aload_0;
+					getfield_a_this 27;		// reference mbank/BankApplet.reg
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					sconst_0;
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					sconst_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					sconst_0;
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					arraylength;
+					bspush 36;
+					sconst_0;
+					sconst_0;
+					sconst_0;
+					invokevirtual 40;		// sim/toolkit/ToolkitRegistry.initMenuEntry([BSSBZBS)B
+					putfield_b 28;		// byte mbank/BankApplet.bankid
+					getfield_a_this 27;		// reference mbank/BankApplet.reg
+					sconst_2;
+					invokevirtual 42;		// sim/toolkit/ToolkitRegistry.setEvent(B)V
+					getfield_a_this 27;		// reference mbank/BankApplet.reg
+					sconst_3;
+					invokevirtual 42;		// sim/toolkit/ToolkitRegistry.setEvent(B)V
+					return;
+		}
+
+		.method public static install([BSB)V 1 {
+			.stack 2;
+			.locals 0;
+
+				L0:	new 43;		// mbank/BankApplet
+					dup;
+					invokespecial 44;		// mbank/BankApplet.<init>()V
+					invokevirtual 45;		// javacard/framework/Applet.register()V
+					return;
+		}
+
+		.method public processToolkit(B)V 8 {
+			.stack 5;
+			.locals 1;
+
+				L0:	invokestatic 46;		// sim/toolkit/EnvelopeHandler.getTheHandler()Lsim/toolkit/EnvelopeHandler;
+					astore_2;
+					sload_1;
+					slookupswitch L4 3 2 L3 3 L3 7 L1;
+				L1:	aload_2;
+					invokevirtual 47;		// sim/toolkit/EnvelopeHandler.getItemIdentifier()B
+					getfield_b_this 28;		// byte mbank/BankApplet.bankid
+					if_scmpne L4;
+				L2:	aload_0;
+					invokevirtual 48;		// mbank/BankApplet.serviceBank()V
+					goto L4;
+				L3:	invokestatic 46;		// sim/toolkit/EnvelopeHandler.getTheHandler()Lsim/toolkit/EnvelopeHandler;
+					astore_2;
+					aload_2;
+					aload_2;
+					invokevirtual 49;		// sim/toolkit/EnvelopeHandler.getSecuredDataOffset()S
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					aload_2;
+					invokevirtual 50;		// sim/toolkit/EnvelopeHandler.getSecuredDataLength()S
+					invokevirtual 51;		// sim/toolkit/ViewHandler.copyValue(S[BSS)S
+					pop;
+					aload_0;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					aload_2;
+					invokevirtual 50;		// sim/toolkit/EnvelopeHandler.getSecuredDataLength()S
+					invokespecial 52;		// mbank/BankApplet.displayText([BSS)B
+					pop;
+					goto L4;
+				L4:	return;
+		}
+
+		.method public serviceBank()V 9 {
+			.stack 9;
+			.locals 1;
+
+				L0:	invokestatic 53;		// sim/toolkit/ProactiveResponseHandler.getTheHandler()Lsim/toolkit/ProactiveResponseHandler;
+					astore_1;
+					aload_0;
+					bspush 77;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+					getfield_a_this 20;		// reference mbank/BankApplet.bank
+					sconst_0;
+					baload;
+					ifne L2;
+				L1:	aload_0;
+					bspush 32;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+				L2:	getfield_b_this 17;		// byte mbank/BankApplet.currentItem
+					slookupswitch L33 8 32 L20 66 L6 73 L17 77 L3 80 L7 83 L6 84 L7 85 L14;
+				L3:	aload_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					getfield_b_this 18;		// byte mbank/BankApplet.currentItemIdx
+					aaload;
+					checkcast 0 41;		// T_CLASSORINTERFACE mbank/BankApplet$Menu
+					invokespecial 54;		// mbank/BankApplet.ShowMenu(Lmbank/BankApplet$Menu;)B
+					ifne L5;
+				L4:	getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					arraylength;
+					sconst_0;
+					invokestatic 55;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_0;
+					aload_1;
+					invokevirtual 56;		// sim/toolkit/ProactiveResponseHandler.getItemIdentifier()B
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					sconst_1;
+					bastore;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_1;
+					getfield_b_this 17;		// byte mbank/BankApplet.currentItem
+					bastore;
+					goto_w L34;
+				L5:	aload_0;
+					sconst_0;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+					goto_w L34;
+				L6:	aload_0;
+					invokespecial 57;		// mbank/BankApplet.EncryptAndSend()V
+					aload_0;
+					bspush 77;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+					goto_w L34;
+				L7:	aload_0;
+					getfield_b_this 17;		// byte mbank/BankApplet.currentItem
+					bspush 80;
+					if_scmpne L9;
+				L8:	getfield_a_this 15;		// reference mbank/BankApplet.dlgPayment
+					goto L10;
+				L9:	getfield_a_this 14;		// reference mbank/BankApplet.dlgTransfer
+				L10:	invokespecial 58;		// mbank/BankApplet.GetInput([B)B
+					ifne L13;
+				L11:	aload_0;
+					invokespecial 59;		// mbank/BankApplet.Confirm()B
+					ifne L13;
+				L12:	aload_0;
+					invokespecial 57;		// mbank/BankApplet.EncryptAndSend()V
+				L13:	aload_0;
+					bspush 77;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+					goto_w L34;
+				L14:	aload_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					sconst_3;
+					aaload;
+					checkcast 0 41;		// T_CLASSORINTERFACE mbank/BankApplet$Menu
+					invokespecial 54;		// mbank/BankApplet.ShowMenu(Lmbank/BankApplet$Menu;)B
+					ifne L16;
+				L15:	aload_0;
+					bspush 43;
+					aload_1;
+					invokevirtual 56;		// sim/toolkit/ProactiveResponseHandler.getItemIdentifier()B
+					invokespecial 60;		// mbank/BankApplet.AppendUserData(BB)V
+					aload_0;
+					invokespecial 57;		// mbank/BankApplet.EncryptAndSend()V
+				L16:	aload_0;
+					bspush 77;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+					goto_w L34;
+				L17:	aload_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					bspush 27;
+					aaload;
+					checkcast 0 31;		// T_CLASSORINTERFACE mbank/BankApplet$InputItem
+					invokespecial 61;		// mbank/BankApplet.GetInput(Lmbank/BankApplet$InputItem;)B
+					ifne L19;
+				L18:	getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					aload_1;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_1;
+					invokevirtual 62;		// sim/toolkit/ProactiveResponseHandler.copyTextString([BS)S
+					sconst_1;
+					ssub;
+					s2b;
+					bastore;
+					aload_0;
+					bspush 63;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					invokespecial 63;		// mbank/BankApplet.AppendUserData(B[B)V
+					aload_0;
+					invokespecial 64;		// mbank/BankApplet.sendSMS()B
+					pop;
+				L19:	aload_0;
+					bspush 77;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+					goto_w L34;
+				L20:	aload_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					bspush 7;
+					aaload;
+					checkcast 0 41;		// T_CLASSORINTERFACE mbank/BankApplet$Menu
+					invokespecial 54;		// mbank/BankApplet.ShowMenu(Lmbank/BankApplet$Menu;)B
+					ifne L24;
+				L21:	getfield_a_this 20;		// reference mbank/BankApplet.bank
+					sconst_0;
+					sconst_1;
+					bastore;
+					getfield_a_this 20;		// reference mbank/BankApplet.bank
+					sconst_1;
+					aload_1;
+					invokevirtual 56;		// sim/toolkit/ProactiveResponseHandler.getItemIdentifier()B
+					bastore;
+					getfield_a_this 20;		// reference mbank/BankApplet.bank
+					sconst_1;
+					baload;
+					sconst_4;
+					if_scmpeq L24;
+				L22:	aload_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					bspush 17;
+					aaload;
+					checkcast 0 31;		// T_CLASSORINTERFACE mbank/BankApplet$InputItem
+					invokespecial 61;		// mbank/BankApplet.GetInput(Lmbank/BankApplet$InputItem;)B
+					ifne L24;
+				L23:	getfield_a_this 21;		// reference mbank/BankApplet.accref
+					sconst_0;
+					aload_1;
+					invokevirtual 65;		// sim/toolkit/ProactiveResponseHandler.getTextStringLength()S
+					s2b;
+					bastore;
+					aload_1;
+					getfield_a_this 21;		// reference mbank/BankApplet.accref
+					sconst_1;
+					invokevirtual 62;		// sim/toolkit/ProactiveResponseHandler.copyTextString([BS)S
+					pop;
+				L24:	getfield_a_this 20;		// reference mbank/BankApplet.bank
+					sconst_0;
+					baload;
+					ifle_w L32;
+				L25:	getfield_a_this 20;		// reference mbank/BankApplet.bank
+					sconst_1;
+					baload;
+					stableswitch L30 1 4 L26 L27 L28 L29;
+				L26:	aload_0;
+					bspush 36;
+					putfield_b 18;		// byte mbank/BankApplet.currentItemIdx
+					aload_0;
+					getfield_a_this 8;		// reference mbank/BankApplet.dlgTransfer_Def
+					putfield_a 14;		// reference mbank/BankApplet.dlgTransfer
+					aload_0;
+					getfield_a_this 9;		// reference mbank/BankApplet.dlgPayment_Def
+					putfield_a 15;		// reference mbank/BankApplet.dlgPayment
+					goto L31;
+				L27:	aload_0;
+					bspush 37;
+					putfield_b 18;		// byte mbank/BankApplet.currentItemIdx
+					aload_0;
+					getfield_a_this 10;		// reference mbank/BankApplet.dlgTransfer_Xaan
+					putfield_a 14;		// reference mbank/BankApplet.dlgTransfer
+					aload_0;
+					getfield_a_this 11;		// reference mbank/BankApplet.dlgPayment_Xaan
+					putfield_a 15;		// reference mbank/BankApplet.dlgPayment
+					goto L31;
+				L28:	aload_0;
+					bspush 38;
+					putfield_b 18;		// byte mbank/BankApplet.currentItemIdx
+					aload_0;
+					getfield_a_this 12;		// reference mbank/BankApplet.dlgTransfer_Xac
+					putfield_a 14;		// reference mbank/BankApplet.dlgTransfer
+					aload_0;
+					getfield_a_this 13;		// reference mbank/BankApplet.dlgPayment_Xac
+					putfield_a 15;		// reference mbank/BankApplet.dlgPayment
+					goto L31;
+				L29:	aload_0;
+					bspush 39;
+					putfield_b 18;		// byte mbank/BankApplet.currentItemIdx
+					goto L31;
+				L30:	aload_0;
+					sconst_0;
+					putfield_b 18;		// byte mbank/BankApplet.currentItemIdx
+					aload_0;
+					getfield_a_this 8;		// reference mbank/BankApplet.dlgTransfer_Def
+					putfield_a 14;		// reference mbank/BankApplet.dlgTransfer
+					aload_0;
+					getfield_a_this 9;		// reference mbank/BankApplet.dlgPayment_Def
+					putfield_a 15;		// reference mbank/BankApplet.dlgPayment
+				L31:	getfield_a_this 27;		// reference mbank/BankApplet.reg
+					getfield_b_this 28;		// byte mbank/BankApplet.bankid
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					getfield_b_this 18;		// byte mbank/BankApplet.currentItemIdx
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					sconst_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					getfield_b_this 18;		// byte mbank/BankApplet.currentItemIdx
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					arraylength;
+					bspush 36;
+					sconst_0;
+					sconst_0;
+					sconst_0;
+					invokevirtual 66;		// sim/toolkit/ToolkitRegistry.changeMenuEntry(B[BSSBZBS)V
+				L32:	aload_0;
+					bspush 77;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+					goto L34;
+				L33:	aload_0;
+					sconst_0;
+					putfield_b 17;		// byte mbank/BankApplet.currentItem
+				L34:	getfield_b_this 17;		// byte mbank/BankApplet.currentItem
+					ifne_w L2;
+				L35:	return;
+		}
+
+		.method public process(Ljavacard/framework/APDU;)V 7 {
+			.stack 0;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	return;
+		}
+
+		.method private AppendUserData(BB)V {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					dup_x 19;
+					bastore;
+					sload_1;
+					bastore;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					dup_x 19;
+					bastore;
+					sconst_1;
+					bastore;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					dup_x 19;
+					bastore;
+					sload_2;
+					bastore;
+					return;
+		}
+
+		.method private AppendUserData(B[B)V {
+			.stack 8;
+			.locals 0;
+
+				L0:	getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					dup_x 19;
+					bastore;
+					sload_1;
+					bastore;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					dup2;
+					baload;
+					sconst_1;
+					sadd;
+					s2b;
+					dup_x 19;
+					bastore;
+					aload_2;
+					ifnull L2;
+				L1:	aload_2;
+					sconst_0;
+					baload;
+					goto L3;
+				L2:	sconst_0;
+				L3:	bastore;
+					aload_2;
+					ifnull L5;
+				L4:	getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					aload_2;
+					sconst_1;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					baload;
+					sconst_1;
+					sadd;
+					aload_2;
+					sconst_0;
+					baload;
+					invokestatic 67;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					sconst_1;
+					ssub;
+					s2b;
+					bastore;
+				L5:	return;
+		}
+
+		.method private GetInput([B)B {
+			.stack 5;
+			.locals 1;
+
+				L0:	invokestatic 53;		// sim/toolkit/ProactiveResponseHandler.getTheHandler()Lsim/toolkit/ProactiveResponseHandler;
+					astore_2;
+					aload_0;
+					sconst_0;
+					putfield_s 29;		// short mbank/BankApplet.i
+				L1:	getfield_s_this 29;		// short mbank/BankApplet.i
+					aload_1;
+					arraylength;
+					if_scmpge L4;
+				L2:	aload_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					aload_1;
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					baload;
+					aaload;
+					checkcast 0 31;		// T_CLASSORINTERFACE mbank/BankApplet$InputItem
+					invokespecial 61;		// mbank/BankApplet.GetInput(Lmbank/BankApplet$InputItem;)B
+					ifne L4;
+				L3:	getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					aload_2;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_1;
+					invokevirtual 62;		// sim/toolkit/ProactiveResponseHandler.copyTextString([BS)S
+					sconst_1;
+					ssub;
+					s2b;
+					bastore;
+					aload_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					aload_1;
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					baload;
+					aaload;
+					getfield_b 1;		// byte mbank/BankApplet$Item.id
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					invokespecial 63;		// mbank/BankApplet.AppendUserData(B[B)V
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					goto L1;
+				L4:	getfield_s_this 29;		// short mbank/BankApplet.i
+					aload_1;
+					arraylength;
+					if_scmplt L6;
+				L5:	sconst_0;
+					goto L7;
+				L6:	sconst_1;
+				L7:	sreturn;
+		}
+
+		.method private GetInput(Lmbank/BankApplet$InputItem;)B {
+			.stack 8;
+			.locals 1;
+
+				L0:	invokestatic 69;		// sim/toolkit/ProactiveHandler.getTheHandler()Lsim/toolkit/ProactiveHandler;
+					astore_2;
+					aload_2;
+					aload_1;
+					getfield_b 4;		// byte mbank/BankApplet$InputItem.type
+					sconst_4;
+					aload_1;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					sconst_0;
+					aload_1;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					arraylength;
+					sconst_1;
+					aload_1;
+					getfield_b 5;		// byte mbank/BankApplet$InputItem.resLen
+					invokevirtual 70;		// sim/toolkit/ProactiveHandler.initGetInput(BB[BSSSS)V
+					aload_2;
+					invokevirtual 71;		// sim/toolkit/ProactiveHandler.send()B
+					sreturn;
+		}
+
+		.method private ShowMenu(Lmbank/BankApplet$Menu;)B {
+			.stack 8;
+			.locals 1;
+
+				L0:	invokestatic 69;		// sim/toolkit/ProactiveHandler.getTheHandler()Lsim/toolkit/ProactiveHandler;
+					astore_2;
+					aload_2;
+					bspush 36;
+					sconst_0;
+					bspush -126;
+					invokevirtual 72;		// sim/toolkit/ProactiveHandler.init(BBB)V
+					aload_2;
+					bspush -123;
+					aload_1;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					sconst_0;
+					aload_1;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					arraylength;
+					invokevirtual 73;		// sim/toolkit/EditHandler.appendTLV(B[BSS)V
+					aload_0;
+					sconst_0;
+					putfield_s 29;		// short mbank/BankApplet.i
+				L1:	getfield_s_this 29;		// short mbank/BankApplet.i
+					aload_1;
+					getfield_a 7;		// reference mbank/BankApplet$Menu.subItems
+					arraylength;
+					if_scmpge L3;
+				L2:	aload_2;
+					bspush -113;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					aload_1;
+					getfield_a 7;		// reference mbank/BankApplet$Menu.subItems
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					baload;
+					aaload;
+					getfield_b 1;		// byte mbank/BankApplet$Item.id
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					aload_1;
+					getfield_a 7;		// reference mbank/BankApplet$Menu.subItems
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					baload;
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					sconst_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					aload_1;
+					getfield_a 7;		// reference mbank/BankApplet$Menu.subItems
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					baload;
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					arraylength;
+					invokevirtual 74;		// sim/toolkit/EditHandler.appendTLV(BB[BSS)V
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					goto L1;
+				L3:	aload_2;
+					invokevirtual 71;		// sim/toolkit/ProactiveHandler.send()B
+					sreturn;
+		}
+
+		.method private Confirm()B {
+			.stack 9;
+			.locals 1;
+
+				L0:	aload_0;
+					sconst_2;
+					putfield_s 29;		// short mbank/BankApplet.i
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					sconst_1;
+					bastore;
+				L1:	getfield_s_this 29;		// short mbank/BankApplet.i
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					baload;
+					if_scmpgt_w L12;
+				L2:	aload_0;
+					sconst_0;
+					putfield_s 30;		// short mbank/BankApplet.j
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					baload;
+					slookupswitch L9 6 36 L4 61 L5 62 L8 64 L3 94 L7 126 L6;
+				L3:	aload_0;
+					bspush 20;
+					putfield_s 30;		// short mbank/BankApplet.j
+					goto L9;
+				L4:	aload_0;
+					bspush 24;
+					putfield_s 30;		// short mbank/BankApplet.j
+					goto L9;
+				L5:	aload_0;
+					bspush 21;
+					putfield_s 30;		// short mbank/BankApplet.j
+					goto L9;
+				L6:	aload_0;
+					bspush 26;
+					putfield_s 30;		// short mbank/BankApplet.j
+					goto L9;
+				L7:	aload_0;
+					bspush 22;
+					putfield_s 30;		// short mbank/BankApplet.j
+					goto L9;
+				L8:	aload_0;
+					bspush 23;
+					putfield_s 30;		// short mbank/BankApplet.j
+				L9:	getfield_s_this 30;		// short mbank/BankApplet.j
+					ifle L11;
+				L10:	getfield_a_this 16;		// reference mbank/BankApplet.items
+					getfield_s_this 30;		// short mbank/BankApplet.j
+					aaload;
+					checkcast 0 31;		// T_CLASSORINTERFACE mbank/BankApplet$InputItem
+					astore_1;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					aload_1;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					sconst_0;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					baload;
+					aload_1;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					arraylength;
+					invokestatic 67;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					s2b;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					dup2;
+					baload;
+					dup_x 19;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+					bspush 32;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					sconst_2;
+					sadd;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					baload;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					sconst_1;
+					sadd;
+					s2b;
+					baload;
+					invokestatic 67;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					s2b;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					dup2;
+					baload;
+					dup_x 19;
+					sconst_1;
+					sadd;
+					s2b;
+					bastore;
+					bspush 10;
+					bastore;
+				L11:	aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					sconst_1;
+					sadd;
+					s2b;
+					baload;
+					sconst_2;
+					sadd;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					goto_w L1;
+				L12:	aload_0;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_1;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					baload;
+					sconst_1;
+					ssub;
+					invokespecial 52;		// mbank/BankApplet.displayText([BSS)B
+					sreturn;
+		}
+
+		.method private EncryptAndSend()V {
+			.stack 9;
+			.locals 2;
+
+				L0:	aload_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					bspush 18;
+					aaload;
+					checkcast 0 31;		// T_CLASSORINTERFACE mbank/BankApplet$InputItem
+					invokespecial 61;		// mbank/BankApplet.GetInput(Lmbank/BankApplet$InputItem;)B
+					ifne_w L13;
+				L1:	invokestatic 53;		// sim/toolkit/ProactiveResponseHandler.getTheHandler()Lsim/toolkit/ProactiveResponseHandler;
+					astore_1;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					aload_1;
+					invokevirtual 65;		// sim/toolkit/ProactiveResponseHandler.getTextStringLength()S
+					s2b;
+					bastore;
+					aload_1;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_1;
+					invokevirtual 62;		// sim/toolkit/ProactiveResponseHandler.copyTextString([BS)S
+					pop;
+					getfield_a_this 22;		// reference mbank/BankApplet.key
+					sconst_0;
+					getfield_a_this 22;		// reference mbank/BankApplet.key
+					arraylength;
+					sconst_0;
+					invokestatic 55;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_1;
+					getfield_a_this 22;		// reference mbank/BankApplet.key
+					sconst_0;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					baload;
+					invokestatic 67;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					getfield_a_this 26;		// reference mbank/BankApplet.keyDES
+					checkcast 0 77;		// T_CLASSORINTERFACE javacard/security/DESKey
+					checkcast 0 77;		// T_CLASSORINTERFACE javacard/security/DESKey
+					getfield_a_this 22;		// reference mbank/BankApplet.key
+					sconst_0;
+					invokeinterface 3 77 5;		// javacard/security/DESKey
+					getfield_a_this 25;		// reference mbank/BankApplet.cipherDES
+					getfield_a_this 26;		// reference mbank/BankApplet.keyDES
+					sconst_2;
+					invokevirtual 78;		// javacardx/crypto/Cipher.init(Ljavacard/security/Key;B)V
+					aload_0;
+					bspush 46;
+					getfield_a_this 20;		// reference mbank/BankApplet.bank
+					invokespecial 63;		// mbank/BankApplet.AppendUserData(B[B)V
+					getfield_a_this 20;		// reference mbank/BankApplet.bank
+					sconst_1;
+					baload;
+					sconst_4;
+					if_scmpeq L3;
+				L2:	aload_0;
+					bspush 35;
+					getfield_a_this 21;		// reference mbank/BankApplet.accref
+					invokespecial 63;		// mbank/BankApplet.AppendUserData(B[B)V
+				L3:	aload_0;
+					bspush 42;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					invokespecial 63;		// mbank/BankApplet.AppendUserData(B[B)V
+				L4:	getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					baload;
+					sconst_1;
+					sadd;
+					invokestatic 67;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					sconst_2;
+					putfield_s 29;		// short mbank/BankApplet.i
+					aload_0;
+					sconst_2;
+					putfield_s 30;		// short mbank/BankApplet.j
+				L5:	getfield_s_this 29;		// short mbank/BankApplet.i
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					baload;
+					if_scmpgt_w L10;
+				L6:	getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					baload;
+					slookupswitch L8 4 36 L7 42 L7 62 L7 64 L7;
+				L7:	getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_s_this 30;		// short mbank/BankApplet.j
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					baload;
+					bastore;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_s_this 30;		// short mbank/BankApplet.j
+					sconst_1;
+					sadd;
+					getfield_a_this 25;		// reference mbank/BankApplet.cipherDES
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					sconst_2;
+					sadd;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					sconst_1;
+					sadd;
+					baload;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_s_this 30;		// short mbank/BankApplet.j
+					sconst_2;
+					sadd;
+					invokevirtual 79;		// javacardx/crypto/Cipher.doFinal([BSS[BS)S
+					s2b;
+					bastore;
+					aload_0;
+					dup;
+					getfield_s 30;		// short mbank/BankApplet.j
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_s_this 30;		// short mbank/BankApplet.j
+					sconst_1;
+					sadd;
+					s2b;
+					baload;
+					sconst_2;
+					sadd;
+					sadd;
+					putfield_s 30;		// short mbank/BankApplet.j
+					goto L9;
+				L8:	aload_0;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					getfield_s_this 30;		// short mbank/BankApplet.j
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					sconst_1;
+					sadd;
+					s2b;
+					baload;
+					sconst_2;
+					sadd;
+					invokestatic 67;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					putfield_s 30;		// short mbank/BankApplet.j
+				L9:	aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					sconst_1;
+					sadd;
+					baload;
+					sconst_2;
+					sadd;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					goto_w L5;
+				L10:	getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					getfield_s_this 30;		// short mbank/BankApplet.j
+					sconst_1;
+					ssub;
+					s2b;
+					bastore;
+					aload_0;
+					invokespecial 64;		// mbank/BankApplet.sendSMS()B
+					pop;
+				L11:	goto L13;
+				L12:	astore_2;
+					aload_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					bspush 30;
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					sconst_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					bspush 30;
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					arraylength;
+					invokespecial 52;		// mbank/BankApplet.displayText([BSS)B
+					pop;
+				L13:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L4 L11 L12 76;
+			}
+		}
+
+		.method private displayText([BSS)B {
+			.stack 6;
+			.locals 1;
+
+				L0:	invokestatic 69;		// sim/toolkit/ProactiveHandler.getTheHandler()Lsim/toolkit/ProactiveHandler;
+					astore 4;
+					aload 4;
+					bspush -128;
+					sconst_4;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokevirtual 80;		// sim/toolkit/ProactiveHandler.initDisplayText(BB[BSS)V
+					aload 4;
+					invokevirtual 71;		// sim/toolkit/ProactiveHandler.send()B
+					sreturn;
+		}
+
+		.method private sendSMS()B {
+			.stack 7;
+			.locals 1;
+
+				L0:	invokestatic 69;		// sim/toolkit/ProactiveHandler.getTheHandler()Lsim/toolkit/ProactiveHandler;
+					astore_1;
+					aload_0;
+					sconst_0;
+					putfield_s 29;		// short mbank/BankApplet.i
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					bspush 17;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					sconst_0;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					sconst_3;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					bspush -127;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					bspush 38;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					bspush -13;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					sconst_0;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					sconst_4;
+					bastore;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					aload_0;
+					dup;
+					getfield_s 29;		// short mbank/BankApplet.i
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 29;		// short mbank/BankApplet.i
+					bspush 18;
+					bastore;
+					aload_0;
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					getfield_a_this 23;		// reference mbank/BankApplet.sms
+					sconst_0;
+					baload;
+					sconst_1;
+					sadd;
+					invokestatic 67;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					putfield_s 29;		// short mbank/BankApplet.i
+					aload_1;
+					bspush 19;
+					sconst_0;
+					bspush -125;
+					invokevirtual 72;		// sim/toolkit/ProactiveHandler.init(BBB)V
+					aload_1;
+					sconst_5;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					bspush 29;
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					sconst_0;
+					getfield_a_this 16;		// reference mbank/BankApplet.items
+					bspush 29;
+					aaload;
+					getfield_a 2;		// reference mbank/BankApplet$Item.alpha
+					arraylength;
+					invokevirtual 73;		// sim/toolkit/EditHandler.appendTLV(B[BSS)V
+					aload_1;
+					bspush -117;
+					getfield_a_this 24;		// reference mbank/BankApplet.tempBuffer
+					sconst_0;
+					getfield_s_this 29;		// short mbank/BankApplet.i
+					invokevirtual 73;		// sim/toolkit/EditHandler.appendTLV(B[BSS)V
+					aload_1;
+					invokevirtual 71;		// sim/toolkit/ProactiveHandler.send()B
+					sreturn;
+		}
+
+	}
+
+}

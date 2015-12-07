@@ -1,0 +1,22 @@
+[Params]
+Java Classes=C:\Program Files\SIMAlliance\Examples\LoadApplet\*.java
+PackageName=com.slb.javacard.interop.loadApplet
+PackageVersion=1.0
+PackageAID=A0000000300002FFFFFFFF8900000100
+ApplicationName=com.slb.javacard.interop.loadApplet.LoadApplet
+ApplicationAID=A0000000300002FFFFFFFF8900000101
+InstanceAID=A0000000300002FFFFFFFF8900000101
+AccessDomain=00
+PriorityLevel=FF
+MaxLoadCmdLength=6C
+MaxMenuEntryTextLength=10
+MaxNbOfTimers=00
+MaxMenuEntryNumber=01
+MenuEntriesPosID=0001
+InstallParams=
+PackageNVMemSize=0D27
+InstallNVMemSize=0400
+InstallVMemSize=0000
+KIDKeyIndex=1
+SecLevelDESKey=0123456789ABCDEF
+ProofOfReceipt=01

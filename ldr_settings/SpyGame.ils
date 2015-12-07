@@ -1,0 +1,22 @@
+[Params]
+Java Classes=C:\Program Files\SIMAlliance\Examples\SpyGame\*.java
+PackageName=com.gieseckedevrient.javacard.spygame
+PackageVersion=1.0
+PackageAID=D2760000050002FFFFFFFF8900000200
+ApplicationName=SpyGameApplet
+ApplicationAID=D2760000050002FFFFFFFF8900000201
+InstanceAID=D2760000050002FFFFFFFF8900000201
+AccessDomain=00
+PriorityLevel=FF
+MaxLoadCmdLength=6C
+MaxMenuEntryTextLength=40
+MaxNbOfTimers=00
+MaxMenuEntryNumber=01
+MenuEntriesPosID=0002
+InstallParams=
+PackageNVMemSize=2000
+InstallNVMemSize=2000
+InstallVMemSize=0000
+KIDKeyIndex=1
+SecLevelDESKey=0123456789ABCDEF
+ProofOfReceipt=01

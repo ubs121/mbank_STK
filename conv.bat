@@ -1,0 +1,1 @@
+java -classpath C:\java\JavaCard\jc211\bin\converter.jar;.\classes com.sun.javacard.converter.Converter -config MobileBank.opt
