@@ -1,4 +1,4 @@
 # mbank_STK
 
 
-STK based Mobile banking solution
+Mobile banking solution using SIM Toolkit
